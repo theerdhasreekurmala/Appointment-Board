@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Appointment Board</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <div class="app-root">
+      <header class="app-bar">
+        <div class="app-bar-left">
+          <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar"><span class="material-icons">menu</span></button>
+          <div class="brand">
+            <span class="material-icons">calendar_today</span>
+            <div>
+              <div class="title">Appointment Board</div>
+              <div class="sub">Team scheduling made simple</div>
+            </div>
+          </div>
+        </div>
+        <div class="app-bar-right">
+          <button id="btn-refresh" class="btn-contained"><span class="material-icons">refresh</span></button>
+          <button id="btn-add" class="btn-contained primary"><span class="material-icons">add</span> Add</button>
+        </div>
+      </header>
+
+      <aside id="sidebar" class="sidebar hidden">
+        <nav>
+          <ul>
+            <li><a href="#"><span class="material-icons">today</span> Today</a></li>
+            <li><a href="#"><span class="material-icons">event</span> Calendar</a></li>
+            <li><a href="#"><span class="material-icons">people</span> Team</a></li>
+            <li><a href="#"><span class="material-icons">settings</span> Settings</a></li>
+          </ul>
+        </nav>
+        <!-- sidebar filters removed (filters are available in the header) -->
+      </aside>
+
+      <main class="container">
+        <div class="appointment-filters">
+          <label>Date: <input type="date" id="filter-date"></label>
+          <label>Status:
+            <select id="filter-status">
+              <option value="">All</option>
+              <option value="scheduled">Scheduled</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </label>
+          <button id="btn-clear-filters" class="btn-outlined">Clear</button>
+        </div>
+
+        <section id="board" class="board"></section>
+
+        <div id="form-modal" class="modal hidden">
+          <div class="modal-content">
+            <h2 id="form-title">Add Appointment</h2>
+            <form id="appt-form">
+              <input type="hidden" id="appt-id">
+              <label>Title: <input id="title" required></label>
+              <label>Description: <input id="description"></label>
+              <label>Date: <input type="date" id="date" required></label>
+              <label>Start time: <input type="time" id="start_time" required></label>
+              <label>End time: <input type="time" id="end_time" required></label>
+              <label>Status:
+                <select id="status">
+                  <option value="scheduled">Scheduled</option>
+                  <option value="completed">Completed</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+              </label>
+              <div class="form-actions">
+                <button type="submit" class="btn-contained primary">Save</button>
+                <button type="button" id="btn-cancel" class="btn-outlined">Close</button>
+              </div>
+              <div id="form-error" class="error"></div>
+            </form>
+          </div>
+        </div>
+
+        <footer>
+          <p>Sample appointments included. Cancelled items remain visible.</p>
+        </footer>
+      </main>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
