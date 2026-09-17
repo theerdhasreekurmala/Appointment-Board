@@ -1,3 +1,0 @@
-DATABASE_URL=postgresql://appt_user:strongpassword@localhost:5432/appointmentdb
-
-SELECT id,title,date,start_time,end_time,status FROM public.appointments ORDER BY id DESC LIMIT 50;
